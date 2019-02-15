@@ -1,0 +1,67 @@
+package com.group4.project.DataService;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.hamcrest.Matchers;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.group4.project.DataService.DAO.UserDAO;
+import com.group4.project.DataService.Model.User;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+public class UserTest {
+	
+	private MockMvc mockMvc;
+	
+	@Mock
+	User user;
+	
+	
+	@InjectMocks
+	UserDAO dao;
+	
+	@Before
+    public void setUp() throws Exception {
+        mockMvc = MockMvcBuilders.standaloneSetup(dao)
+                .build();
+    }
+	
+    @Test
+    public void testUserJson() throws Exception {
+        mockMvc.perform(get("/user/json")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.userID", Matchers.is("4")))
+                .andExpect(jsonPath("$.userName", Matchers.is("Nitin")))
+                .andExpect(jsonPath("$.password", Matchers.is("nitin123")))
+                .andExpect(jsonPath("$.*", Matchers.hasSize(3)));
+    }
+    @Test
+    public void testPost() throws Exception {
+        String json = "{\n" +
+                "  \"userID\": \"4\",\n" +
+                "  \"userName\": \"Nitin\"\n" +
+                "  \"password\": \"nitin123\"\n"+
+                "}";
+        mockMvc.perform(post("/hello/post")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.userID", Matchers.is("4")))
+                .andExpect(jsonPath("$.userName", Matchers.is("Nitin")))
+                .andExpect(jsonPath("$.password", Matchers.is("Hnitin123")))
+                .andExpect(jsonPath("$.*", Matchers.hasSize(3)));
+    }
+
+}

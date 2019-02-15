@@ -1,0 +1,33 @@
+<html>
+<head> </head>
+<body>
+<script>
+function Bank(name,bal,accno)
+{
+	var acc_name=name;
+	var acc_bal=bal;
+	const acc_accno=accno;
+
+return {
+	display:function(name1)
+	{
+	acc_name=name1;
+
+	},
+	read1:function()
+	{
+	return acc_name;
+        
+	},
+	get:function()
+	{
+	return acc_accno;
+	}
+}
+	
+}
+var bank=new Bank("Sindhu",50000,111001101789);
+document.write(bank.read1());
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" 
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+<bean id="customer" class="com.sindhu.assignment1.Customer">
+<property name="address2" ref="add"></property>
+<property name="id" value="164158"></property>
+<property name="name" value="Sindhu"></property>
+<property name="contact" value="7022086020"></property>
+<property name="address" value="Sirsi"></property>
+</bean>
+<bean id="add" class="com.sindhu.assignment1.Address">
+<property name="street" value="Sirsi"></property>
+<property name="city" value="Karwar"></property>
+<property name="state" value="Karnataka"></property>
+<property name="zip" value="581340"></property>
+<property name="country" value="India"></property>
+</bean>
+</beans>

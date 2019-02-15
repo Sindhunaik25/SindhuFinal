@@ -1,0 +1,9 @@
+1545110217172	Move 'DispatcherServlet.xml' to 'WEB-INF'
+1545110233793	Move 'index.html' to 'WEB-INF'
+1545110237533	Move 'login.jsp' to 'lib'
+1545112632947	Delete element
+1545117744773	Delete element
+1545125516075	Delete element
+1545125560437	Rename type 'LoginPage'
+1545126139186	Delete element
+1545129122515	Rename resource 'DispatcherServlet.xml'

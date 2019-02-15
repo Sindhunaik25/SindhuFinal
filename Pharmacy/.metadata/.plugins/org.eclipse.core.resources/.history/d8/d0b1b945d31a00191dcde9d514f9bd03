@@ -1,0 +1,107 @@
+package com.group4.project.DataService;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
+import org.hamcrest.Matchers;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+//import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.group4.project.DataService.DAO.UserDAO;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+public class DataServiceApplicationTests {
+
+	private MockMvc mockMvc;
+
+	@InjectMocks
+	private UserDAO dao;
+
+	@Before
+	public void setUp() throws Exception {
+		mockMvc = MockMvcBuilders.standaloneSetup(dao).build();
+	}
+	/*
+	 * @Test public void testUser() throws Exception {
+	 * mockMvc.perform(get("/json").accept(MediaType.APPLICATION_JSON))
+	 * .andExpect(jsonPath("$.*", Matchers.hasSize(3))); }
+	 */
+
+	@Test
+	public void verifyToDoById() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/post/json").accept(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$.userID").exists()).andExpect(jsonPath("$.userName").exists())
+				.andExpect(jsonPath("$.password").exists()).andExpect(jsonPath("$.userID").value(4))
+				.andExpect(jsonPath("$.userName").value("Nitin")).andExpect(jsonPath("$.password").value("nitin123"))
+				.andDo(print());
+	}
+
+}
+
+
+
+/*@InjectMocks
+EmployeeManager manager;
+ 
+@Mock
+EmployeeDao dao;
+
+@Before
+public void init() {
+    MockitoAnnotations.initMocks(this);
+}
+ 
+@Test
+public void getAllEmployeesTest()
+{
+    List<EmployeeVO> list = new ArrayList<EmployeeVO>();
+    EmployeeVO empOne = new EmployeeVO(1, "John", "John", "howtodoinjava@gmail.com");
+    EmployeeVO empTwo = new EmployeeVO(2, "Alex", "kolenchiski", "alexk@yahoo.com");
+    EmployeeVO empThree = new EmployeeVO(3, "Steve", "Waugh", "swaugh@gmail.com");
+     
+    list.add(empOne);
+    list.add(empTwo);
+    list.add(empThree);
+     
+    when(dao.getEmployeeList()).thenReturn(list);
+     
+    //test
+    List<EmployeeVO> empList = manager.getEmployeeList();
+     
+    assertEquals(3, empList.size());
+    verify(dao, times(1)).getEmployeeList();
+}
+ 
+@Test
+public void getEmployeeByIdTest()
+{
+    when(dao.getEmployeeById(1)).thenReturn(new EmployeeVO(1,"Lokesh","Gupta","user@email.com"));
+     
+    EmployeeVO emp = manager.getEmployeeById(1);
+     
+    assertEquals("Lokesh", emp.getFirstName());
+    assertEquals("Gupta", emp.getLastName());
+    assertEquals("user@email.com", emp.getEmail());
+}
+ 
+@Test
+public void createEmployeeTest()
+{
+    EmployeeVO emp = new EmployeeVO(1,"Lokesh","Gupta","user@email.com");
+     
+    manager.addEmployee(emp);
+     
+    verify(dao, times(1)).addEmployee(emp);
+}*/

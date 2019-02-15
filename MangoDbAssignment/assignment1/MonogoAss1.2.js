@@ -1,0 +1,1 @@
+db.movies.find({"authors":"Quentin Tarantino"})

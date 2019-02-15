@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="discovery-server"/>
+<aop-project name="demoActuator"/>
+<aop-project name="spring-boot-swagger-example-master"/>
+</aop-reference-model>

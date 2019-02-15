@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="scf-ribbon-time-app-custom-config-master"/>
+<aop-project name="scf-gateway-service-with-filter-master"/>
+<aop-project name="scf-ribbon-time-service-custom-config-master"/>
+<aop-project name="discovery-server"/>
+<aop-project name="config-server"/>
+<aop-project name="ServerConfiguration"/>
+<aop-project name="scf-config-client-app-master"/>
+<aop-project name="scf-routing-goodbye-service-master"/>
+<aop-project name="ClientrConfigurationGit"/>
+<aop-project name="client"/>
+<aop-project name="ServerConfigurationGit"/>
+<aop-project name="scf-routing-hello-service-master"/>
+<aop-project name="scf-gateway-service-master"/>
+<aop-project name="scf-hello-service-with-req-header-master"/>
+<aop-project name="ribbon-time-app"/>
+<aop-project name="service"/>
+<aop-project name="scf-config-server-with-discovery-master"/>
+<aop-project name="ribbon-time-service"/>
+</aop-reference-model>

@@ -1,0 +1,16 @@
+package com.sinnaik;
+
+public class PrintNumberDo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+do
+{
+	int i;
+	System.out.println(i);
+	i=i+1;
+}while(i<=10);
+	}
+
+}

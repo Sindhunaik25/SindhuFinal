@@ -1,0 +1,251 @@
+
+<.xml>
+<bean id="bankAccount1" class="com.spring.third.BankAccount" scope="prototype">
+    <constructor-arg index="0" value="1"/>
+      <constructor-arg index="1" value="Birappa"/>
+        <constructor-arg index="2" value="Saving"/>
+          <constructor-arg index="3" value="20000"/>
+         
+    </bean>
+    
+    <bean id="bankAccount2" class="com.spring.third.BankAccount" scope="prototype">
+    <constructor-arg index="0" value="2"/>
+      <constructor-arg index="1" value="Prathyusha"/>
+        <constructor-arg index="2" value="Saving"/>
+          <constructor-arg index="3" value="30000"/>
+         
+    </bean>
+    
+    <bean id="bankAccountRepositoryImpl" class="com.spring.third.BankAccountRepositoryImpl">
+  	<!-- <constructor-arg ref="bankAccount"/> -->
+  	<property name="accounts">
+  	<list>
+  	<ref bean="bankAccount1"></ref>
+  	<ref bean="bankAccount2"></ref>
+  	</list>
+  	</property>
+  	
+    </bean>
+    
+    <bean id="bankAccountServiceImpl" class="com.spring.third.BankAccountServiceImpl">
+  	<constructor-arg ref="bankAccountRepositoryImpl"/>
+    </bean>
+    
+     <bean id="bankAccountController" class="com.spring.third.BankAccountController">
+  	<constructor-arg ref="bankAccountServiceImpl"/>
+
+
+
+BankRepository
+public class BankAccountRepositoryImpl implements BankAccountRepository {
+
+	List<BankAccount> accounts=null;
+	
+	public BankAccountRepositoryImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	public BankAccountRepositoryImpl(List<BankAccount> accounts) {
+		super();
+		this.accounts = accounts;
+	}
+	
+	@Override
+	public double getBalance(long accountId) {
+	BankAccount account=getBeanOfBankAccount(accountId);
+		if(account!=null)
+		return account.getAccountBalance();
+		
+		return 0;
+	}
+
+	
+
+	@Override
+	public double updateBalance(long accountId, double newBalance, String type) {
+		
+		BankAccount account=getBeanOfBankAccount(accountId);
+		if(account!=null){
+			
+			if(type.equals("withdraw")){
+				account.setAccountBalance(account.getAccountBalance()-newBalance);
+			}
+			else if(type.equals("deposit"))
+				account.setAccountBalance(account.getAccountBalance()+newBalance);
+			return account.getAccountBalance();
+			
+		}
+		return 0;
+	}
+
+	public List<BankAccount> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<BankAccount> accounts) {
+		this.accounts = accounts;
+	}
+
+	private BankAccount getBeanOfBankAccount(long accountId){
+		if(accounts!=null){
+			for(BankAccount account:accounts ){
+				if(account.getAccountId()==accountId){
+					return account;
+				}
+			}
+		}
+		return null;
+	}
+	
+}
+
+
+
+ServiceImpl
+public class BankAccountServiceImpl implements BankAccountService  {
+
+	BankAccountRepositoryImpl bankAccountRepositoryImpl=null;
+	public BankAccountServiceImpl() {
+		
+	}
+
+	public BankAccountServiceImpl(
+			BankAccountRepositoryImpl bankAccountRepositoryImpl) {
+		super();
+		this.bankAccountRepositoryImpl = bankAccountRepositoryImpl;
+	}
+
+	@Override
+	public double withdraw(long accountId, double balance) {
+	
+		return bankAccountRepositoryImpl.updateBalance(accountId, balance, "withdraw");
+	}
+
+	@Override
+	public double deposit(long accountId, double balance) {
+		return bankAccountRepositoryImpl.updateBalance(accountId, balance, "deposit");
+		
+	}
+
+	@Override
+	public double getBalance(long accountId) {
+		
+		return bankAccountRepositoryImpl.getBalance(accountId);
+	}
+
+	@Override
+	public boolean fundTransfer(long fromAccount, long toAccount, double amont) {
+		double account1=withdraw(fromAccount, amont);
+		if(account1!=0){
+			double account2=deposit(toAccount, amont);
+			if(account2!=0){
+				return true;
+			}
+			deposit(fromAccount, amont);
+		}
+		return false;
+	}
+
+	
+}
+
+
+
+DAO
+public class BankDAO {
+
+	private List<BankAccount> bankCustomer;
+	public BankDAO() {
+		bankCustomer=new ArrayList<BankAccount>();
+	}
+
+	public boolean addBankCustomer(BankAccount account){
+		
+		return bankCustomer.add(account);
+	}
+
+	public List<BankAccount> getBankCustomer() {
+		return bankCustomer;
+	}
+
+	public void setBankCustomer(List<BankAccount> bankCustomer) {
+		this.bankCustomer = bankCustomer;
+	}
+
+	@Override
+	public String toString() {
+		return "BankDAO [bankCustomer=" + bankCustomer + "]";
+	}
+	
+	
+}
+
+
+
+TestClass(Main)
+public class Test {
+
+	public Test() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		
+		ApplicationContext context= new ClassPathXmlApplicationContext("third.xml");
+		BankAccountController contrller=context.getBean(BankAccountController.class);
+		System.out.println(contrller.getBalance(1));
+		System.out.println(contrller.deposit(1, 5000));
+		System.out.println(contrller.withdraw(1, 10000));
+		System.out.println("to account balance " + contrller.getBalance(2));
+		System.out.println(contrller.fundTransfer(1, 2, 5000));
+		System.out.println("from account balance " + contrller.getBalance(1));
+		System.out.println("to account balance " + contrller.getBalance(2));
+		
+		((ConfigurableApplicationContext)(context)).close();
+	}
+
+}
+
+
+
+BankAccountController
+public class BankAccountController {
+
+	private BankAccountServiceImpl bankAccountServiceImpl;
+	public BankAccountController(BankAccountServiceImpl bankAccountServiceImpl) {
+		super();
+		this.bankAccountServiceImpl = bankAccountServiceImpl;
+	}
+
+
+	public BankAccountController() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	public double withdraw(long accountId, double balance){
+		return bankAccountServiceImpl.withdraw(accountId, balance);
+	}
+	public double deposit(long accountId, double balance){
+		return bankAccountServiceImpl.deposit(accountId, balance);
+	}
+	public double getBalance(long accountId){
+		return bankAccountServiceImpl.getBalance(accountId);
+	}
+	public boolean fundTransfer(long fromAccount, long toAccount, double amont){
+		return bankAccountServiceImpl.fundTransfer(fromAccount, toAccount, amont);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+    </bean>

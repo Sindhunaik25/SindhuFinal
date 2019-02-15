@@ -1,0 +1,11 @@
+src/com/sin/Even.java:3:	All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+src/com/sin/Even.java:3:	Header comments are required
+src/com/sin/Even.java:5:	Parameter 'args' is not assigned and could be declared final
+src/com/sin/Even.java:5:	Public method and constructor comments are required
+src/com/sin/Even.java:10:	System.out.println is used
+src/com/sin/EvenNumber.java:4:	All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+src/com/sin/EvenNumber.java:4:	Header comments are required
+src/com/sin/EvenNumber.java:6:	To avoid mistakes add a comment at the beginning of the null constructor if you want a default access modifier
+src/com/sin/EvenNumber.java:10:	Parameter 'args' is not assigned and could be declared final
+src/com/sin/EvenNumber.java:10:	Public method and constructor comments are required
+src/com/sin/EvenNumber.java:17:	System.out.println is used

@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Mark and John</title>
+</head>
+<body>
+<script type="text/javascript">
+var val=false;
+var mass1=parseInt(prompt("Enter the mass of Mark"));
+var height1=parseInt(prompt("Enter the height of Mark"));
+var mass2=parseInt(prompt("Enter the mass of John"));
+var height2=parseInt(prompt("Enter the height of John"));
+var BMI1=mass1/(height1*height1);
+document.write("Enter Mark's mass "+mass1+"<br>");
+document.write("Enter Mark's height "+height1+"<br>");
+document.write("BMI1 is "+BMI1+"<br>");
+var BMI2=mass2/(height2*height2);
+document.write("Enter John's mass "+mass2+"<br>");
+document.write("Enter John's height "+height2+"<br>");
+document.write("BMII2 is "+BMI2+"<br>");
+if(BMI1>BMI2)
+{
+alert("Mark's BMI is greater");
+val=true;
+}
+else
+{
+alert("John's BMI is greater","<br>");
+}
+document.write("Is BMI of Mark is greater than John "+val);
+</script>
+</body>
+</head>

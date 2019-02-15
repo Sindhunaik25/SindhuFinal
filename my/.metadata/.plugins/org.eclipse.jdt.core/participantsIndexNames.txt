@@ -1,0 +1,7 @@
+INDEX VERSION 1.127
+C:\Sindhu\my\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1191856640.index
+\Go_Shopping\src
+C:\Sindhu\my\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3040519698.index
+\Go_Shopping\src
+C:\Sindhu\my\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2237847029.index
+\Go_Shopping\src

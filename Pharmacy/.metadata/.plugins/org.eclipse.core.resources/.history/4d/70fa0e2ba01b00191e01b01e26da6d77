@@ -1,0 +1,12 @@
+package com.group4.project.DataService;
+
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+public class UserTest {
+	
+	private MockMvc mockMvc;
+
+}

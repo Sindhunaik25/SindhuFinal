@@ -1,0 +1,40 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" 
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="controller" class="com.spring.bank.BankAccountController"
+		autowire="byName"></bean>
+
+	<bean id="accountServiceImpl" class="com.spring.bank.BankAccountServiceImpl"
+		autowire="byName"></bean>
+
+	<bean id="accountepositoryImpl" class="com.spring.bank.BankAccountepositoryImpl">
+	<property name="list">
+		<list>
+		<ref bean="list0"></ref>
+		<ref bean="list1"></ref>
+		</list>
+	
+	</property>
+		</bean>
+
+	<bean id="list0" class="com.spring.bank.BankAccount">
+		<property name="accountId" value="100"></property>
+		<property name="accountHolderName" value="Mallika"></property>
+		<property name="accountType" value="Saving"></property>
+		<property name="accountBalance" value="10000"></property>
+	</bean>
+
+	<bean id="list1" class="com.spring.bank.BankAccount">
+		<property name="accountId" value="101"></property>
+		<property name="accountHolderName" value="Sindhu"></property>
+		<property name="accountType" value="Saving"></property>
+		<property name="accountBalance" value="100000"></property>
+	</bean>
+	
+	<!-- <bean id="list2" class="com.spring.bank.BankAccount">
+		<property name="accountId" value="102"></property>
+		<property name="accountHolderName" value="Arpita"></property>
+		<property name="accountType" value="Current"></property>
+		<property name="accountBalance" value="200000"></property>
+	</bean> -->
+</beans>

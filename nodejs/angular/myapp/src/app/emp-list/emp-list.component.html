@@ -1,0 +1,40 @@
+<!-- <p>
+  emp-list works!
+</p> -->
+<div class="container">
+<div class="col-md-10 text-center">
+  <table class="table">
+    <thead class="thead-inverse">
+    <tr class="table-danger">
+      <td> Emp Id</td>&nbsp;
+      <td>Name</td>&nbsp;
+      <td>Email</td>&nbsp;
+      <td>Phone</td>&nbsp;
+      <td>Salary</td>&nbsp;
+      <td>Appraisal Rating</td>
+    </tr></thead>
+    <tbody>
+      <tr *ngIf="employees.length==0">
+        <td colspan="7" rowspan="7">No records found..</td>
+      </tr>
+      <tr *ngFor="let emp of employees" class="table-info">
+        <td><p class="text-success">{{emp.empId}}</p></td>&nbsp;
+        <td><p class="text-info">{{emp.name|uppercase}}</p></td>&nbsp;
+        <td><p class="text-active">{{emp.email}}</p></td>&nbsp;
+        <td><p class="text-secondary">{{emp.phone}}</p></td>&nbsp;
+        <td><p class="text-primary">{{emp.salary}}</p></td>&nbsp;
+        <td>{{emp.appraisalRating}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="search name" name="name" [(ngModel)]="searchTerm">
+</div>
+<div *ngFor="let emp1 of employees | empsearch:searchTerm:name">
+  <div (click)="onClick(emp1.empId)" class="pointerCursor">
+   <!--  <app-display-employees [emp1]="emp1" #childComponent></app-display-employees>
+     -->
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Sindhu\SinNaik\scf-ribbon-time-app-without-sd-master"/>
+			<item value="C:\Sindhu\SinNaik\scf-ribbon-time-service-without-sd-master"/>
+			<item value="C:\Sindhu\SinNaik\scf-config-server-with-discovery-master"/>
+			<item value="C:\Sindhu\SinNaik\scf-config-server-master"/>
+			<item value="C:\Users\sinnaik\Desktop\demos\discovery-server"/>
+			<item value="C:\Sindhu\SinNaik\discovery-server"/>
+			<item value="C:\Users\sinnaik\Desktop\demos\client"/>
+			<item value="C:\Users\sinnaik\Desktop\demos\service"/>
+			<item value="C:\Users\sinnaik\Downloads\scf-discovery-server-master"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+</section>

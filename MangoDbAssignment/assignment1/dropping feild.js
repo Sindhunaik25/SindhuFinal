@@ -1,0 +1,1 @@
+db.movies.update({'title':'Pulp Fiction'},{$unset: {actors:1}},{multi: false});

@@ -1,0 +1,51 @@
+1.db.user.insert({username : "GoodGuyGreg", first_name : "Good Guy", last_name : "Greg"})
+
+2.db.user.insert({username : "ScumbagSteve", full_name : [{first : "Scumbag"} ,{last : "Steve"}]})
+
+3.db.posts.insert({username : "GoodGuyGreg", title : "Passes out at party", body : "Wakes up early and cleans house"})
+
+4.db.posts.insert({username : "GoodGuyGreg", title : "Steals your identity", body : "Raises your credit score"})
+
+5.db.posts.insert({username : "GoodGuyGreg", title : "Reports a bug in your code", body : "Sends you a Pull Request"})
+
+6.db.posts.insert({username : "ScumbagSteve", title : "Borrows something", body : "Sells it"})
+
+7.db.posts.insert({username : "ScumbagSteve", title : "Borrows everything", body : "The end"})
+
+8.db.posts.insert({username : "ScumbagSteve", title : "Forks your repo on github", body : "Sets to private"})
+
+9.db.comments.insert({username : "GoodGuyGreg", comment : "Hope you got a good deal!", post :ObjectId("5c24b77e1ffac5b7fa16d3ce") })
+
+10.db.comments.insert({username : "GoodGuyGreg", comment : "What's mine is yours!", post :ObjectId("5c24b7a81ffac5b7fa16d3cf") })
+
+11.db.comments.insert({username : "GoodGuyGreg", comment : "Don't violate the licensing agreement!", post :ObjectId("5c24b7d21ffac5b7fa16d3d0") })
+
+12.db.comments.insert({username : "ScumbagSteve", comment : "It still isn't clean", post :ObjectId("5c24b6da1ffac5b7fa16d3cb") })
+
+13.db.comments.insert({username : "ScumbagSteve", comment : "Denied your PR cause I found a hack", post :ObjectId("5c24b74c1ffac5b7fa16d3cd") })
+
+14.find all users
+db.user.find()
+
+15.find all posts
+db.posts.find()
+
+16.find all posts that was authored by "GoodGuyGreg"
+db.posts.find({ "username" : "GoodGuyGreg"})
+
+17.find all posts that was authored by "ScumbagSteve"
+db.posts.find({ "username" : "ScumbagSteve"})
+
+18.find all comments
+db.comments.find()
+
+19.find all comments that was authored by "GoodGuyGreg"
+db.comments.find({ "username" : "GoodGuyGreg"})
+
+20.find all comments that was authored by "ScumbagSteve"
+db.comments.find({ "username" : "ScumbagSteve"})
+
+21.find all comments belonging to the post "Reports a bug in your code"
+db.comments.find({post:db.posts.findOne({title:"Reports a bug in your code"})._id})
+
+

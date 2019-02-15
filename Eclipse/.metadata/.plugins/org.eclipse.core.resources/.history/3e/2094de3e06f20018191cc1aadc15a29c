@@ -1,0 +1,28 @@
+package com.java.collections;
+
+public class MyList<E> {
+E e;
+	public void add(E e)
+	{
+		System.out.println("Adding an element "+e);
+	}
+	public E get()
+	{
+		System.out.println(e);
+		return e;
+	}
+	public void remove(E e)
+	{
+		System.out.println("Removing an element "+e);
+	}
+public static void main(String[] args) {
+	MyList<Integer> list=new MyList<Integer>();
+	MyList<String> list1=new MyList<String>();
+	list.add(10);
+	list.remove(20);
+	list.get();
+	list1.add("Sindhu");
+	list1.remove("Sindhu");
+	
+}
+}

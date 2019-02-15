@@ -1,0 +1,21 @@
+package com.java.collections;
+
+import java.util.TreeSet;
+
+public class TreeSetTest {
+
+	public static void main(String[] args) {
+		TreeSet<Person> t=new TreeSet<Person>();
+		t.add(new Person(5.2,45.3,"Sindhu"));
+		t.add(new Person(5.5,67.3,"Sachin"));
+		t.add(new Person(5.3,67.3,"Pavitra"));
+		t.add(new Person(5.8,55.3,"Pavan"));
+		
+		for(Person p:t)
+		{
+			System.out.println("Height= "+p.height+" " + "Weight= "+p.weight + " "+ "Name= "+p.name);
+		}
+
+	}
+
+}

@@ -1,0 +1,1 @@
+db.movies.remove({title:"The Hobbit: An Unexpected Journey"})

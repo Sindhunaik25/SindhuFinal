@@ -1,0 +1,45 @@
+Name:{{name}}
+ Age:{{age}}
+Address:
+    {{address.street}},{{address.city}},{{address.state}}<br>
+    <button (click)="onClick()">Click here</button>
+    <h1>Edit User</h1>
+    <form>
+        <div >
+          
+            <label for="name">Name:</label><br><br>
+            <input type="text" [(ngModel)]="name" name="name">
+        </div>
+        <div>
+            <label for="age">Age:</label><br><br>
+            <input type="number" [(ngModel)]="age" name="age">
+        </div>
+       <!--  <div>
+            <label for="hobbies">Hobby:</label><br><br>
+            <input type="text" [(ngModel)]="hobbies" name="hobbies">
+        </div> -->
+    </form>
+    <form (submit)="addHobby(hobby.value)">
+<div >
+    <label for="hobby">Hobby</label><br>
+    <input type="text" #hobby >
+</div>
+
+    </form>
+ Hobbies<li *ngFor="let hobby of hobbies"> {{hobby}}  <button (click)="onDelete(hobby)">X</button>   </li>
+<h1>Welcome User!!!!!!</h1>
+
+<div class="slide">
+
+<carousel>
+    <slide>
+      <img src="1.ico" alt="first slide" style="display: block; width: 70%; height:40%">
+    </slide>
+    <slide>
+      <img src="2.ico" alt="second slide" style="display: block; width: 70%; height:25%">
+    </slide>
+    <slide>
+      <img src="3.ico" alt="third slide" style="display: block; width: 70%; height:40%">
+    </slide>
+  </carousel>
+</div>

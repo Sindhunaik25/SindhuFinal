@@ -1,0 +1,31 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" 
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+<bean id="question" class="com.sindhu.assignment2.Question">
+<property name="qsnId" value="100"></property>
+<property name="question" value="Name some flowers."></property>
+<property name="answer">
+<list>
+<value>Rose</value>
+<value>Rose</value>
+<value>Champa</value>
+<value>Marigold</value>
+</list></property>
+<property name="answer1">
+<set>
+<value>Rose</value>
+<value>Rose</value>
+<value>Jasmine</value>
+<value>Marigold</value>
+</set>
+</property>
+<property name="answer2">
+<map>
+<entry key="1" value="Rose"></entry>
+<entry key="2" value="Marigold"></entry>
+<entry key="3" value="Jasmine"></entry>
+</map>
+
+</property>
+</bean>
+</beans>

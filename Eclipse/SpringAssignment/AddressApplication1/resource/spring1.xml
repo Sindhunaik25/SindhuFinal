@@ -1,0 +1,36 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" 
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="question" class="com.spring.assignment2.Question">
+		<property name="questionId" value="10"></property>
+		<property name="questions" value="What is class?"></property>
+		<!-- <property name="answer" value="Logical collection of methods and variables"></property> -->
+		<property name="answer">
+		<list>
+			<value>Logical collection of methods and variables</value>
+			<value>Blueprint of an object</value>
+			<value>Blueprint of an object</value>
+		</list></property>
+		
+		<property name="answer1">
+		<set>
+		<value>Blueprint of an object</value>
+			<value>Blueprint of an object</value>
+		</set>
+		</property>
+		
+		<property name="answer2">
+		
+		<map>
+		<entry key = "1" value = "Sindhu"/>
+            <entry key = "2" value = "Rashmi"/>
+            <entry key = "3" value = "Chaya"/>
+            <entry key = "4" value = "Mallika"/>
+		</map>
+		
+		
+		</property> 
+		
+	</bean>
+
+</beans>
